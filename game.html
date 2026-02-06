@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhaaru 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(#8ECDF4, #FFF7C2);
+  overflow: hidden;
+  text-align: center;
+  color: #2F5D9F;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.sunflower {
+  position: absolute;
+  font-size: 36px;
+  animation: floatUp 6s linear forwards;
+  cursor: pointer;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(110vh); }
+  to { transform: translateY(-10vh); }
+}
+
+/* Message bubble */
+#msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFD84D;
+  padding: 14px 22px;
+  border-radius: 25px;
+  display: none;
+  font-size: 14px;
+}
+
+/* Score Screen */
+#scoreScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(#2F5D9F, #8ECDF4);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 999;
+}
+
+#scoreScreen h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.firework {
+  position: fixed;
+  font-size: 26px;
+  z-index: 10001; /* HIGHER than score screen */
+  pointer-events: none;
+  animation: explode 1.6s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2)
+      translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+
+/* Music */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #FFD84D;
+  border-radius: 50%;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" src="song2.mp3" loop autoplay></audio>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<h2>Catch the Sunflowers 🌻</h2>
+<p>Tap 5 flowers</p>
+
+<div id="msg"></div>
+
+<!-- SCORE SCREEN -->
+<div id="scoreScreen">
+  <h1>Dhaaru won my heart 💙</h1>
+  <p>Six years. Still magic. Forever us 🌻</p>
+</div>
+
+<script>
+let count = 0;
+
+const messages = [
+  "You make life brighter 💛",
+  "You are my safest place",
+  "High school love, forever love",
+  "I believe in you always",
+  "You are my home 🌻"
+];
+
+/* Heartbeat vibration */
+function heartbeat() {
+  if (navigator.vibrate) {
+    navigator.vibrate([120, 60, 120]);
+  }
+}
+
+/* Spawn sunflower */
+function spawnSunflower() {
+  let s = document.createElement("div");
+  s.className = "sunflower";
+  s.innerText = "🌻";
+  s.style.left = Math.random() * 90 + "%";
+
+  s.onclick = () => {
+    heartbeat();
+    s.remove();
+    showMessage(messages[count]);
+    count++;
+
+    if (count === 5) {
+      endGame();
+    }
+  };
+
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 6000);
+}
+
+/* Message bubble */
+function showMessage(text) {
+  let m = document.getElementById("msg");
+  m.innerText = text;
+  m.style.display = "block";
+  setTimeout(() => m.style.display = "none", 1500);
+}
+
+/* End Game */
+function endGame() {
+  const screen = document.getElementById("scoreScreen");
+  screen.style.display = "flex";
+
+  // start infinite fireworks
+  setTimeout(() => {
+    fireworksForever();
+  }, 300);
+}
+
+let fireworksInterval = null;
+
+function fireworksForever() {
+  if (fireworksInterval) return; // prevent duplicates
+
+  const icons = ["🎆", "✨", "💥","🎉","🎊","🥳"];
+
+  fireworksInterval = setInterval(() => {
+    for (let i = 0; i < 12; i++) {
+      const f = document.createElement("span");
+      f.className = "firework";
+      f.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.top = Math.random() * 100 + "vh";
+
+      f.style.setProperty("--x", `${Math.random() * 300 - 150}px`);
+      f.style.setProperty("--y", `${Math.random() * -300}px`);
+
+      document.body.appendChild(f);
+      setTimeout(() => f.remove(), 1600);
+    }
+  }, 500); // every 0.5s (smooth + not heavy)
+}
+
+/* Music */
+function toggleMusic() {
+  let m = document.getElementById("music");
+  m.paused ? m.play() : m.pause();
+}
+
+/* Start game */
+setInterval(spawnSunflower, 1200);
+</script>
+
+</body>
+</html>

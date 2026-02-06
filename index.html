@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Dhaaru 💙🌻</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD84D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #8ECDF4, #FFF7C2);
+  color: #2F5D9F;
+  overflow-x: hidden;
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Typing */
+.typing {
+  font-size: 34px;
+  color: #FFD84D;
+  border-right: 2px solid #FFD84D;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Floating Sunflowers */
+.flower {
+  position: fixed;
+  font-size: 26px;
+  animation: float 14s linear infinite;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from { transform: translateY(110vh); }
+  to { transform: translateY(-10vh); }
+}
+.no-btn {
+  background: #fff;
+  border: 2px solid #FFD84D;
+  color: #2F5D9F;
+  padding: 14px 28px;
+  border-radius: 30px;
+  margin-left: 10px;
+  position: relative;
+}
+
+
+/* Music Button */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #FFD84D;
+  border-radius: 50%;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+  z-index: 999;
+}
+
+/* YES Button */
+.yes-btn {
+  background: #FFD84D;
+  font-size: 18px;
+  padding: 18px 36px;
+  border-radius: 40px;
+  border: none;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Fade */
+.fade-out {
+  animation: fade 1.2s forwards;
+}
+
+@keyframes fade {
+  to { opacity: 0; }
+}
+
+.end {
+  background: #2F5D9F;
+  color: white;
+}
+.love-btn {
+  margin-top: 16px;
+  background: #FFD84D;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pop {
+  position: absolute;
+  font-size: 22px;
+  animation: pop 1.2s forwards;
+  pointer-events: none;
+}
+
+@keyframes pop {
+  0% { transform: scale(0) translate(0,0); opacity:1; }
+  100% {
+    transform: scale(1.6)
+      translate(var(--x), var(--y));
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating Sunflowers -->
+<script>
+for(let i=0;i<14;i++){
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerText="🌻";
+  f.style.left=Math.random()*100+"%";
+  f.style.animationDuration=10+Math.random()*10+"s";
+  document.body.appendChild(f);
+}
+for(let i=0;i<14;i++){
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerText="💙";
+  f.style.left=Math.random()*100+"%";
+  f.style.animationDuration=10+Math.random()*10+"s";
+  document.body.appendChild(f);
+}
+for(let i=0;i<14;i++){
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerText="💛";
+  f.style.left=Math.random()*100+"%";
+  f.style.animationDuration=10+Math.random()*10+"s";
+  document.body.appendChild(f);
+}
+</script>
+
+<!-- Music -->
+<audio id="music" src="song.mp3" loop></audio>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<!-- HERO -->
+<section class="hero">
+  <h1><span class="typing" id="type"></span></h1>
+  <p>From classrooms to dreams,<br>you’ve always been my favorite story.</p>
+  <button class="love-btn" onclick="heartbeat(); burstLove(this)">
+  ❤️‍🔥 Tap Me
+</button>
+
+</section>
+
+<section>
+  <h2>Just for You 💙</h2>
+  <p>I believe in every dream you chase.</p>
+  <p>You inspire me every single day.</p>
+  <p>I’m so proud of you, Dhaaru 🌻</p>
+</section>
+
+<section class="end">
+  <h2>Dhaaru 💛</h2>
+  <p>
+    I loved you then.<br>
+    I love you now.<br>
+    I’ll love every version you become.
+  </p>
+  <div>
+  <button class="yes-btn" onclick="heartbeat(); go()">YES 💍</button>
+  <button class="no-btn" id="noBtn">NO 🙈</button>
+  
+</div>
+
+</section>
+
+<script>
+/* Typing */
+let name="Dhaaru 🌻"; let i=0;
+(function type(){
+  if(i<name.length){
+    typeEl=document.getElementById("type");
+    typeEl.innerHTML+=name.charAt(i++);
+    setTimeout(type,120);
+  }
+})();
+
+/* Music */
+function toggleMusic(){
+  let m=document.getElementById("music");
+  m.paused?m.play():m.pause();
+}
+
+/* Emotional Transition */
+function go(){
+  document.body.classList.add("fade-out");
+  setTimeout(()=>location.href="proposal.html",1200);
+}
+function heartbeat() {
+  if (navigator.vibrate) {
+    navigator.vibrate([120, 60, 120]); // lub-dub ❤️
+  }
+}
+
+</script>
+<script>
+function heartbeat(){
+  if(navigator.vibrate){
+    navigator.vibrate([120,60,120]);
+  }
+}
+
+const noBtn = document.getElementById("noBtn");
+
+function moveNo(){
+  heartbeat();
+  const container = noBtn.parentElement;
+  const maxX = container.offsetWidth - noBtn.offsetWidth;
+  const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top  = Math.random() * maxY + "px";
+}
+
+/* Mobile + Desktop support */
+noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("mouseover", moveNo);
+function heartbeat(){
+  if(navigator.vibrate){
+    navigator.vibrate([120,60,120]);
+  }
+}
+
+function burstLove(btn){
+  const symbols = ["❤️","💘","💞","🎉","✨","❣️","😘","💖"];
+  for(let i=0;i<18;i++){
+    let e = document.createElement("span");
+    e.className = "pop";
+    e.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+    e.style.setProperty("--x", `${Math.random()*200-100}px`);
+    e.style.setProperty("--y", `${Math.random()*-200}px`);
+    btn.appendChild(e);
+    setTimeout(()=>e.remove(),12000);
+  }
+}
+</script>
+
+
+</body>
+</html>
