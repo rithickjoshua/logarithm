@@ -111,6 +111,9 @@ h2 {
 </head>
 
 <body>
+<div id="scoreBox">
+Score: <span id="score">0</span> 🌻
+</div>
 
 <!-- MUSIC -->
 <audio id="music" src="song2.mp3" loop autoplay></audio>
@@ -118,9 +121,6 @@ h2 {
 
 <h2>Catch the Sunflowers 🌻</h2>
 <p>Tap 100 flowers</p>
-<div id="scoreBox">
-Score: <span id="score">0</span> 🌻
-</div>
 
 <div id="msg"></div>
 
@@ -140,167 +140,88 @@ const messages = [
   "You are my safest place",
   "High school love, forever love",
   "I believe in you always",
-  "You are my home 🌻"
-  “Trend is your main direction; countertrend is temporary.”,
-
-“A wick break is not confirmation.”,
-
-“Body close shows real market acceptance.”,
-
-“Break of structure needs candle close.”,
-
-“Liquidity is often taken before real moves.”,
-
-“Strong close means strong intent.”,
-
-“Weak close means hesitation.”,
-
-“High timeframe controls low timeframe.”,
-
-“Structure defines bias, not indicators.”,
-
-“Higher highs confirm an uptrend.”,
-
-“Lower lows confirm a downtrend.”,
-
-“Sideways market means no edge.”,
-
-“Fake breakouts trap impatient traders.”,
-
-“Wait for candle close, not emotion.”,
-
-“Impulse creates structure; pullback creates entry.”,
-
-“BOS confirms continuation.”,
-
-“CHoCH hints a possible reversal.”,
-
-“Wick above resistance can be a trap.”,
-
-“Body above resistance shows strength.”,
-
-“Close matters more than high or low.”,
-
-“Never trade in the middle of a range.”,
-
-“Entries near structure give better risk–reward.”,
-
-“Stop hunts often happen near highs and lows.”,
-
-“Market moves from liquidity to liquidity.”,
-
-“One candle can change market bias.”,
-
-“Confirmation reduces the chance of loss.”,
-
-“No confirmation means no trade.”,
-
-“Patience is a trading edge.”,
-
-“Trendlines break with body, not wick.”,
-
-“Volume plus body close is a strong signal.”,
-
-“Clean charts lead to clean decisions.”,
-
-“Indicators lag; structure leads.”,
-
-“Price action reflects trader psychology.”,
-
-“Big candles show imbalance.”,
-
-“Small candles show indecision.”,
-
-“Rejection wicks show defense.”,
-
-“Acceptance candles show control.”,
-
-“Higher timeframe BOS beats lower timeframe noise.”,
-
-“Don’t predict the market; react to it.”,
-
-“The market rewards discipline, not hope.”,
-
-“Consolidation before expansion is common.”,
-
-“A breakout without close is unreliable.”,
-
-“Strong trends have shallow pullbacks.”,
-
-“Deep pullbacks weaken trends.”,
-
-“Always mark previous highs and lows.”,
-
-“Structure first, entry later.”,
-
-“Risk management matters more than strategy.”,
-
-“One good trade beats ten bad ones.”,
-
-“Trading is probability, not certainty.”,
-
-“Losses are part of the process.”,
-
-“Emotional trading breaks rules.”,
-
-“Rules protect capital.”,
-
-“Capital protection comes first.”,
-
-“No trade is also a valid trade.”,
-
-“Wait for price to come to you.”,
-
-“FOMO destroys consistency.”,
-
-“Confirmation saves patience.”,
-
-“Trend continuation trades are safer.”,
-
-“Countertrend trades need extra confirmation.”,
-
-“A strong close near the high shows bullish strength.”,
-
-“A strong close near the low shows bearish strength.”,
-
-“A mid-body close signals confusion.”,
-
-“Avoid trades during indecision.”,
-
-“Market structure is your roadmap.”,
-
-“Liquidity highs attract price.”,
-
-“Liquidity lows attract price.”,
-
-“Stop losses act like magnets.”,
-
-“News creates volatility, not structure.”,
-
-“Structure survives the news.”,
-
-“One timeframe bias avoids confusion.”,
-
-“Trade less and focus more.”,
-
-“Journaling builds discipline.”,
-
-“Backtesting builds confidence.”,
-
-“Experience teaches patience.”,
-
-“Simple rules beat complex systems.”,
-
-“Consistency beats big wins.”,
-
-“The close confirms intent.”,
-
-“Wicks tell rejection stories.”,
-
-“Bodies tell control stories.”,
-
-“Price action is the final truth.”,
+  "You are my home 🌻",
+
+  "You calm my heart",
+  "You make ordinary days special",
+  "I choose you every time",
+  "You are my favorite thought",
+  "You feel like sunshine",
+
+  "With you, I feel complete",
+  "You make me smile without trying",
+  "You are my peace",
+  "I feel lucky loving you",
+  "You are my comfort",
+
+  "Growing with you is beautiful",
+  "You understand me so well",
+  "You are my constant",
+  "You make love feel easy",
+  "You are my soft place to land",
+
+  "Six years, still magic ✨",
+  "You are my best decision",
+  "I trust you with my heart",
+  "You make me feel safe",
+  "You are my happy place",
+
+  "Your smile changes everything",
+  "You inspire me every day",
+  "You make love feel warm",
+  "You are my always",
+  "You feel like destiny",
+
+  "I love who I am with you",
+  "You make my world gentler",
+  "You are my favorite person",
+  "You are my calm in chaos",
+  "You make me feel seen",
+
+  "You matter so much to me",
+  "You make life feel lighter",
+  "You are my quiet joy",
+  "You make my heart steady",
+  "You are my anchor",
+
+  "You are my best feeling",
+  "You make love feel real",
+  "You are my comfort song",
+  "You make my days better",
+  "You are my soft happiness",
+
+  "You feel like forever",
+  "You are my reason to smile",
+  "You make my heart feel full",
+  "You are my constant light",
+  "You are my favorite chapter",
+
+  "You make life kinder",
+  "You feel like home always",
+  "You are my heart’s choice",
+  "You make me feel grounded",
+  "You are my gentle strength",
+
+  "You make love feel safe",
+  "You are my warm place",
+  "You are my sunshine 🌞",
+  "You make my heart peaceful",
+  "You are my one",
+
+  "You are my forever person",
+  "You make life feel right",
+  "You are my favorite hello",
+  "You are my quiet happiness",
+  "You make love feel true",
+
+  "You are my today and tomorrow",
+  "You are my soft miracle",
+  "You make my heart smile",
+  "You are my sweetest constant",
+  "You are my everything 💙"
 ];
+  
+
 
 /* Heartbeat vibration */
 function heartbeat() {
@@ -389,5 +310,6 @@ setInterval(spawnSunflower, 120);
 
 </body>
 </html>
+
 
 
