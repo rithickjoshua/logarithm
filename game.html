@@ -106,7 +106,7 @@ h2 {
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <h2>Catch the Sunflowers 🌻</h2>
-<p>Tap 5 flowers</p>
+<p>Tap 100 flowers</p>
 
 <div id="msg"></div>
 
@@ -147,7 +147,7 @@ function spawnSunflower() {
     showMessage(messages[count]);
     count++;
 
-    if (count === 5) {
+    if (count === 100) {
       endGame();
     }
   };
@@ -212,3 +212,4 @@ setInterval(spawnSunflower, 1200);
 
 </body>
 </html>
+
