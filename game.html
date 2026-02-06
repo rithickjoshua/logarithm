@@ -111,9 +111,7 @@ h2 {
 </head>
 
 <body>
-<div id="scoreBox">
-Score: <span id="score">0</span> 🌻
-</div>
+
 
 <!-- MUSIC -->
 <audio id="music" src="song2.mp3" loop autoplay></audio>
@@ -128,10 +126,12 @@ Score: <span id="score">0</span> 🌻
 <div id="scoreScreen">
   <h1>Dhaaru won my heart 💙</h1>
   <p>Six years. Still magic. Forever us 🌻</p>
+  <div id="scoreBox">
+  Score: <span id="score">0</span> 🌻
+  </div>
 </div>
 
 <script>
-let count = 0;
 let score = 0;
 
 
@@ -240,12 +240,12 @@ function spawnSunflower() {
   s.onclick = () => {
     heartbeat();
     s.remove();
-    showMessage(messages[count]);
+    showMessage(messages[score]);
     score++;
     document.getElementById("score").innerText = score;
 
 
-    if (count === 100) {
+    if (score === 100) {
       endGame();
     }
   };
@@ -310,6 +310,7 @@ setInterval(spawnSunflower, 120);
 
 </body>
 </html>
+
 
 
 
