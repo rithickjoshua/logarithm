@@ -32,6 +32,17 @@ h2 {
   from { transform: translateY(110vh); }
   to { transform: translateY(-10vh); }
 }
+#scoreBox {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 216, 77, 0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 10000;
+}
 
 /* Message bubble */
 #msg {
@@ -107,6 +118,9 @@ h2 {
 
 <h2>Catch the Sunflowers 🌻</h2>
 <p>Tap 100 flowers</p>
+<div id="scoreBox">
+Score: <span id="score">0</span> 🌻
+</div>
 
 <div id="msg"></div>
 
@@ -118,6 +132,8 @@ h2 {
 
 <script>
 let count = 0;
+let score = 0;
+
 
 const messages = [
   "You make life brighter 💛",
@@ -125,6 +141,165 @@ const messages = [
   "High school love, forever love",
   "I believe in you always",
   "You are my home 🌻"
+  “Trend is your main direction; countertrend is temporary.”,
+
+“A wick break is not confirmation.”,
+
+“Body close shows real market acceptance.”,
+
+“Break of structure needs candle close.”,
+
+“Liquidity is often taken before real moves.”,
+
+“Strong close means strong intent.”,
+
+“Weak close means hesitation.”,
+
+“High timeframe controls low timeframe.”,
+
+“Structure defines bias, not indicators.”,
+
+“Higher highs confirm an uptrend.”,
+
+“Lower lows confirm a downtrend.”,
+
+“Sideways market means no edge.”,
+
+“Fake breakouts trap impatient traders.”,
+
+“Wait for candle close, not emotion.”,
+
+“Impulse creates structure; pullback creates entry.”,
+
+“BOS confirms continuation.”,
+
+“CHoCH hints a possible reversal.”,
+
+“Wick above resistance can be a trap.”,
+
+“Body above resistance shows strength.”,
+
+“Close matters more than high or low.”,
+
+“Never trade in the middle of a range.”,
+
+“Entries near structure give better risk–reward.”,
+
+“Stop hunts often happen near highs and lows.”,
+
+“Market moves from liquidity to liquidity.”,
+
+“One candle can change market bias.”,
+
+“Confirmation reduces the chance of loss.”,
+
+“No confirmation means no trade.”,
+
+“Patience is a trading edge.”,
+
+“Trendlines break with body, not wick.”,
+
+“Volume plus body close is a strong signal.”,
+
+“Clean charts lead to clean decisions.”,
+
+“Indicators lag; structure leads.”,
+
+“Price action reflects trader psychology.”,
+
+“Big candles show imbalance.”,
+
+“Small candles show indecision.”,
+
+“Rejection wicks show defense.”,
+
+“Acceptance candles show control.”,
+
+“Higher timeframe BOS beats lower timeframe noise.”,
+
+“Don’t predict the market; react to it.”,
+
+“The market rewards discipline, not hope.”,
+
+“Consolidation before expansion is common.”,
+
+“A breakout without close is unreliable.”,
+
+“Strong trends have shallow pullbacks.”,
+
+“Deep pullbacks weaken trends.”,
+
+“Always mark previous highs and lows.”,
+
+“Structure first, entry later.”,
+
+“Risk management matters more than strategy.”,
+
+“One good trade beats ten bad ones.”,
+
+“Trading is probability, not certainty.”,
+
+“Losses are part of the process.”,
+
+“Emotional trading breaks rules.”,
+
+“Rules protect capital.”,
+
+“Capital protection comes first.”,
+
+“No trade is also a valid trade.”,
+
+“Wait for price to come to you.”,
+
+“FOMO destroys consistency.”,
+
+“Confirmation saves patience.”,
+
+“Trend continuation trades are safer.”,
+
+“Countertrend trades need extra confirmation.”,
+
+“A strong close near the high shows bullish strength.”,
+
+“A strong close near the low shows bearish strength.”,
+
+“A mid-body close signals confusion.”,
+
+“Avoid trades during indecision.”,
+
+“Market structure is your roadmap.”,
+
+“Liquidity highs attract price.”,
+
+“Liquidity lows attract price.”,
+
+“Stop losses act like magnets.”,
+
+“News creates volatility, not structure.”,
+
+“Structure survives the news.”,
+
+“One timeframe bias avoids confusion.”,
+
+“Trade less and focus more.”,
+
+“Journaling builds discipline.”,
+
+“Backtesting builds confidence.”,
+
+“Experience teaches patience.”,
+
+“Simple rules beat complex systems.”,
+
+“Consistency beats big wins.”,
+
+“The close confirms intent.”,
+
+“Wicks tell rejection stories.”,
+
+“Bodies tell control stories.”,
+
+“Price action is the final truth.”,
 ];
 
 /* Heartbeat vibration */
@@ -145,7 +320,9 @@ function spawnSunflower() {
     heartbeat();
     s.remove();
     showMessage(messages[count]);
-    count++;
+    score++;
+    document.getElementById("score").innerText = score;
+
 
     if (count === 100) {
       endGame();
@@ -207,9 +384,10 @@ function toggleMusic() {
 }
 
 /* Start game */
-setInterval(spawnSunflower, 1200);
+setInterval(spawnSunflower, 120);
 </script>
 
 </body>
 </html>
+
 
